@@ -29,23 +29,23 @@ def add_box( polygons, x, y, z, width, height, depth ):
     y1 = y - height
     z1 = z - depth
 
-    add_polygon(polygons, x, y, z, x, y1, z, x1, y1, z)
-    add_polygon(polygons, x, y, z, x1, y1, z, x1, y, z)
+    add_polygon(polygons, x, y, z, x1, y, z1,x1,y,z)
+    add_polygon(polygons, x, y, z, x, y, z1,x1,y,z1)
 
-    add_polygon(polygons, x, y, z1, x, y1, z1, x1, y1, z1)
-    add_polygon(polygons, x, y, z1, x1, y1, z1, x1, y, z1)
+    add_polygon(polygons, x, y1, z,x1,y1,z, x1, y1, z1)
+    add_polygon(polygons, x, y1, z,x1,y1,z1, x, y1, z1)
 
-    add_polygon(polygons, x, y, z, x, y1, z, x, y1, z1)
-    add_polygon(polygons, x, y1, z1, x, y, z1, x, y, z)
+    add_polygon(polygons, x, y, z, x1, y1, z,x,y1,z)
+    add_polygon(polygons, x, y, z, x1,y,z,x1, y1, z)
 
-    add_polygon(polygons, x1, y, z, x1, y1, z, x1, y1, z1)
-    add_polygon(polygons, x1, y1, z1, x1, y, z1, x1, y, z)
+    add_polygon(polygons, x, y, z1,x,y1,z1, x1, y1, z1)
+    add_polygon(polygons, x, y, z1, x1, y1, z1,x1,y,z1)
 
-    add_polygon(polygons, x, y, z, x1, y, z1, x1, y, z)
-    add_polygon(polygons, x, y, z, x, y, z1, x1, y, z1)
+    add_polygon(polygons, x1, y, z,x1,y1,z1, x1, y1, z)
+    add_polygon(polygons, x1, y1, z1,x1,y,z, x1, y, z1)
 
-    add_polygon(polygons, x, y1, z, x1, y1, z1, x1, y1, z)
-    add_polygon(polygons, x, y1, z, x, y1, z1, x1, y1, z1)
+    add_polygon(polygons, x, y, z, x, y1, z,x,y1,z1)
+    add_polygon(polygons, x, y1, z1, x, y, z1,x,y,z)
 
 
 def add_sphere(polygons, cx, cy, cz, r, step ):
@@ -58,7 +58,7 @@ def add_sphere(polygons, cx, cy, cz, r, step ):
 
     step+= 1
     for lat in range(lat_start, lat_stop):
-        for longt in range(longt_start, longt_stop+1):
+        for longt in range(longt_start, longt_stop):
             index = lat * step + longt
 
             add_polygon(polygons, points[index][0], points[index][1], points[index][2], points[(index + 1) % len(points)][0], points[(index + 1) % len(points)][1], points[(index + 1) % len(points)][2], points[(index + step) % len(points)][0], points[(index + step) % len(points)][1], points[(index + step) % len(points)][2])
